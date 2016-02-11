@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bLogout.setOnClickListener(this);
 
         userLocalStore = new UserLocalStore(this);
+
     }
 
 

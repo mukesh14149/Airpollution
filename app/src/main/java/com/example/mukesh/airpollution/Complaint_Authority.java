@@ -1,7 +1,7 @@
 package com.example.mukesh.airpollution;
 
 /**
- * Created by tarun on 12/2/16.
+ * Created by tarun on 13/2/16.
  */
 
 
@@ -10,16 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class Monitor_DelhiPollution extends AppCompatActivity {
+public class Complaint_Authority extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.monitor_delhi_pollution);
+        setContentView(R.layout.complaint_authority);
 
     }
-
-
 
 
 }

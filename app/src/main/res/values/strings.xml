@@ -6,4 +6,7 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">Register</string>
     <string name="title_monitor_delhi_pollution">Delhi Pollution</string>
+    <string name="title_monitor_iiitd_pollution">IIITD Pollution</string>
+    <string name="title_need_help">Need Help</string>
+    <string name="title_complaint_authority">Complaint Authority</string>
 </resources>

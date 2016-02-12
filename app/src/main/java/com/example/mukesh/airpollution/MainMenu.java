@@ -22,12 +22,31 @@ public class MainMenu extends AppCompatActivity {
     public void openMainActivity(View view) {
 // Do something in response to button
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
     }
-    public void openActivity1(View view) {
+
+    public void openActivity1   (View view) {
 // Do something in response to button
         startActivity(new Intent(getApplicationContext(), Monitor_DelhiPollution.class));
 
     }
+
+    public void openActivity2(View view) {
+// Do something in response to button
+        startActivity(new Intent(getApplicationContext(), Monitor_IIITDPollution.class));
+
+    }
+
+    public void openActivity3(View view) {
+// Do something in response to button
+        startActivity(new Intent(getApplicationContext(), Help_FromFriend.class));
+
+    }
+
+    public void openActivity4(View view) {
+// Do something in response to button
+        startActivity(new Intent(getApplicationContext(), Complaint_Authority.class));
+
+    }
+
 
 }

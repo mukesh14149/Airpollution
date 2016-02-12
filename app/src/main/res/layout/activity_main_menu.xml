@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="left"
-        android:onClick="openActivity3"
+        android:onClick="openActivity2"
         android:layout_weight="1"
 
         android:background="@drawable/iiitd_card_blur"
@@ -59,7 +59,7 @@
         android:textColor="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:onClick="openActivity4"
+        android:onClick="openActivity3"
         android:layout_weight="1"
         android:background="@drawable/rai_card_blur"
         android:textSize="20sp"
@@ -70,7 +70,7 @@
         android:text="Complaint to authority"
         android:layout_width="match_parent"
 
-        android:onClick="openActivity2"
+        android:onClick="openActivity4"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"

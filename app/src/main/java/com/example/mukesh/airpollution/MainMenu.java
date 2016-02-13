@@ -24,7 +24,7 @@ public class MainMenu extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
-    public void openActivity1   (View view) {
+    public void openActivity1(View view) {
 // Do something in response to button
         startActivity(new Intent(getApplicationContext(), Monitor_DelhiPollution.class));
 

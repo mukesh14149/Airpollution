@@ -38,6 +38,16 @@
         </activity>
 
         <activity
+            android:name=".Help_FromFriend_Needed"
+            android:label="@string/help_needed" >
+        </activity>
+
+        <activity
+            android:name=".Help_FromFriend_Offered"
+            android:label="@string/help_offered" >
+        </activity>
+
+        <activity
             android:name=".Complaint_Authority"
             android:label="@string/title_complaint_authority" >
         </activity>

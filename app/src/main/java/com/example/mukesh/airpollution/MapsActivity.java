@@ -3,15 +3,11 @@ package com.example.mukesh.airpollution;
 /**
  * Created by mukesh on 23/1/16.
  */
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
+
+
 import android.os.Bundle;
-import android.widget.Toast;
-import  com.google.android.gms.*;
-import com.google.android.gms.maps.GoogleMap.*;
-//import com.google.android.gms.maps.GoogleMap.OnPolygonClickListener;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.Polygon;
+import android.support.v4.app.FragmentActivity;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,13 +15,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polygon;
-import com.google.android.gms.maps.model.PolygonOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
-
-import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -41,6 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -50,75 +40,66 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-
-
     @Override
-    public void onMapReady(final GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        final LatLng SYDNEY = new LatLng(28.6139,77.2090);
+        final LatLng MOUNTAIN_VIEW = new LatLng(28.6387, 77.0941);
+
         final LatLngBounds.Builder bounds;
         final LatLng s=new LatLng(28.643353 ,77.446747);
-        final LatLng w=new LatLng(28.509488, 76.823273);
         bounds = new LatLngBounds.Builder();
         bounds.include(new LatLng( 28.643353 ,77.446747));
         bounds.include(new LatLng(28.509488, 76.823273));
 
-        ArrayList<Polygon> polygonList = new ArrayList<>();
-        Polygon polygon = googleMap.addPolygon(new PolygonOptions()
-                        .add(new LatLng(28.555335, 76.798553), new LatLng(28.830117, 76.935883), new LatLng(28.882919, 77.080078), new LatLng(28.868489, 77.220154), new LatLng(28.714438, 77.328644), new LatLng(28.519141, 77.3698434), (new LatLng(28.399615, 77.196808)), (new LatLng(28.555335, 76.798553)))
-                        .strokeColor(Color.RED)
+        // Obtain the map from a MapFragment or MapView.
 
-                //    .fillColor(Color.BLUE)
-                //
-        );
+// Move the camera instantly to Sydney with a zoom of 15.
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SYDNEY, 15));
+
+// Zoom in, animating the camera.
+        mMap.animateCamera(CameraUpdateFactory.zoomIn());
+
+// Zoom out to zoom level 10, animating with a duration of 2 seconds.
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
+// Construct a CameraPosition focusing on Mountain View and animate the camera to that position.
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(MOUNTAIN_VIEW)      // Sets the center of the map to Mountain View
+                .zoom(17)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
+        mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
 
-        // ArrayList<Polygon> polygonList = new ArrayList<>();
-        Polygon p1 = googleMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(28.882919, 77.080078), new LatLng(28.752972, 77.078705), new LatLng(28.714438, 77.328644), new LatLng(28.868489, 77.220154),new LatLng(28.882919, 77.080078))
+                                           @Override
+                                           public void onCameraChange(CameraPosition arg0) {
+                                               // Move camera.
+                                               // googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(),
+                                               if(arg0.zoom>=13);
 
-                .strokeColor(Color.RED)
+                                               else if (arg0.zoom<13) {CameraPosition cameraPosition1 = new CameraPosition.Builder()
+                                                       .target(MOUNTAIN_VIEW)      // Sets the center of the map to Mountain View
+                                                       .zoom(17)                   // Sets the zoom
+                                                       .bearing(90)                // Sets the orientation of the camera to east
+                                                       .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                                                       .build();                   // Creates a CameraPosition from the builder
+                                                   mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition1));
 
-                .fillColor(Color.BLUE));
-
-        // ArrayList<Polygon> polygonList = new ArrayList<>();
-        Polygon p2 = googleMap.addPolygon(new PolygonOptions()
-                        .add(new LatLng(28.882919, 77.080078), new LatLng(28.752972, 77.078705), new LatLng(28.830117, 76.935883), new LatLng(28.882919, 77.080078))
-
-                        .strokeColor(Color.RED)
-
-                //.fillColor(Color.BLUE)
-        );
-        Polygon p3 = googleMap.addPolygon(new PolygonOptions()
-                        .add(new LatLng(28.555335, 76.798553), new LatLng(28.752972, 77.078705), new LatLng(28.830117, 76.935883), new LatLng(28.555335, 76.798553))
-
-                        .strokeColor(Color.RED)
-
-                // .fillColor(Color.BLUE)
-        );
-
-        googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
-
-                                                @Override
-                                                public void onCameraChange(CameraPosition arg0) {
-                                                    // Move camera.
-                                                    // googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(),
-                                                    // if (CameraPosition)
-                                                    googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 12));
-
-                                                    // Remove listener to prevent position reset on camera move.
-                                                    //  googleMap.setOnCameraChangeListener(googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(),12)));
+                                               }
+                                               // Remove listener to prevent position reset on camera move.
+                                               //  googleMap.setOnCameraChangeListener(googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(),12)));
 
 
 
-                                                    //googleMap.(latlngbounds);
-                                                }
+                                               //googleMap.(latlngbounds);
+                                           }
 
-                                            }
+                                       }
 
         );
-
-
     }
-
-
 }

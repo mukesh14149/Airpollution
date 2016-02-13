@@ -15,5 +15,7 @@
     <string name="priority1">Low</string>
     <string name="priority2">Medium</string>
     <string name="priority3">High</string>
+    <string name="title_activity_Map">Delhi Map</string>
+
 
 </resources>

@@ -9,5 +9,13 @@
     <string name="title_monitor_iiitd_pollution">IIITD Pollution</string>
     <string name="title_need_help">Need Help</string>
     <string name="title_complaint_authority">Complaint Authority</string>
+    <string name="help_needed">Help Needed</string>
+    <string name="help_offered">Offer Help</string>
+
+    <string name="priority1">Low</string>
+    <string name="priority2">Medium</string>
+    <string name="priority3">High</string>
     <string name="title_activity_Map">Delhi Map</string>
+
+
 </resources>

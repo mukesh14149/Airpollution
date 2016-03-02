@@ -4,37 +4,59 @@
     android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical">
+    android:scrollbars="vertical"
+    android:fillViewport="false">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/TextViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hey"
-            android:textSize="20pt">
-        </TextView>
-
         <EditText
-            android:id="@+id/EditTextName"
+            android:id="@+id/User_Id"
             android:layout_height="wrap_content"
-            android:hint="name"
-            android:inputType="textPersonName"
+            android:hint="@string/User_Id"
+            android:layout_width="match_parent">
+        </EditText>
+        <EditText
+            android:id="@+id/User_Name"
+            android:layout_height="wrap_content"
+            android:hint="@string/User_Name"
             android:layout_width="match_parent">
         </EditText>
 
-
-
         <Spinner
-            android:id="@+id/SpinnerFeedbackType"
-            android:layout_height="wrap_content"
-            android:prompt="@string/priority1"
+            android:id="@+id/User_Location"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:entries="@array/prioritylist">
+            android:entries="@array/Location">
         </Spinner>
+
+        <EditText
+            android:id="@+id/User_Area"
+            android:layout_height="wrap_content"
+            android:hint="@string/User_Area"
+            android:layout_width="match_parent">
+        </EditText>
+
+        <EditText
+            android:id="@+id/Post_Description"
+            android:layout_height="wrap_content"
+            android:height="50pt"
+            android:hint="@string/Post_Description"
+            android:layout_width="match_parent">
+        </EditText>
+
+        <Button
+            android:id="@+id/Upload_Pic"
+            android:layout_height="wrap_content"
+            android:text="@string/Upload_Pic"
+            android:layout_width="wrap_content"/>
+
+        <Button
+            android:id="@+id/Submit"
+            android:layout_height="wrap_content"
+            android:text="@string/Submit"
+            android:layout_width="wrap_content"/>
 
     </LinearLayout>
 </ScrollView>

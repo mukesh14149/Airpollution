@@ -17,5 +17,25 @@
     <string name="priority3">High</string>
     <string name="title_activity_Map">Delhi Map</string>
 
+    <string name="User_Id">Id</string>
+    <string name="User_Name">Name</string>
+    <string name="User_Area">Area</string>
+    <string name="Post_Description">Description</string>
+    <string name="Upload_Pic">Upload</string>
+    <string name="Submit">Submit</string>
+
+
+    <string-array name="Location">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+
 
 </resources>

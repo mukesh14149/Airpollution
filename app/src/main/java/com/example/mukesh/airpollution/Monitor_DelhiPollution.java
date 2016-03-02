@@ -19,7 +19,4 @@ public class Monitor_DelhiPollution extends AppCompatActivity {
 
     }
 
-
-
-
 }

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mukesh.airpollution" >
+    package="com.example.mukesh.airpollution">
 
-    <uses-permission android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission
+        android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainMenu"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,51 +28,40 @@
         </activity>
         <activity
             android:name=".Monitor_DelhiPollution"
-            android:label="@string/title_monitor_delhi_pollution" >
-        </activity>
-
+            android:label="@string/title_monitor_delhi_pollution"></activity>
         <activity
             android:name=".Login"
-            android:label="@string/title_activity_login" >
-        </activity>
-
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".Monitor_IIITDPollution"
-            android:label="@string/title_monitor_iiitd_pollution" >
-        </activity>
-
+            android:label="@string/title_monitor_iiitd_pollution"></activity>
         <activity
             android:name=".Help_FromFriend"
-            android:label="@string/title_need_help" >
-        </activity>
-
+            android:label="@string/title_need_help"></activity>
         <activity
             android:name=".Help_FromFriend_Needed"
-            android:label="@string/help_needed" >
-        </activity>
-
+            android:label="@string/help_needed"></activity>
         <activity
             android:name=".Help_FromFriend_Offered"
-            android:label="@string/help_offered" >
-        </activity>
-
+            android:label="@string/help_offered"></activity>
         <activity
             android:name=".Complaint_Authority"
-            android:label="@string/title_complaint_authority" >
-        </activity>
-
-
+            android:label="@string/title_complaint_authority"></activity>
         <activity
             android:name=".Register"
-            android:label="@string/title_activity_register" >
-        </activity>
+            android:label="@string/title_activity_register"></activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_Map" >
-        </activity>
+            android:label="@string/title_activity_Map"></activity>
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAQz-hn5j-35puYtixK_JeQczgtfxKGmY4 "        />
+            android:value="AIzaSyAQz-hn5j-35puYtixK_JeQczgtfxKGmY4 " />
+
+        <activity
+            android:name=".Polygon"
+            android:label="@string/title_activity_polygon"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

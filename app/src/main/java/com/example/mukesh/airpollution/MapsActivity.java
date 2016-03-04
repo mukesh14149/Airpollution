@@ -55,7 +55,6 @@ implements OnMapClickListener, OnMapReadyCallback {
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync((OnMapReadyCallback) this);
 
-        mMap.setOnMapClickListener(this);
 
     }
 
@@ -63,6 +62,8 @@ implements OnMapClickListener, OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap)
     {
         mMap = googleMap;
+        mMap.setOnMapClickListener(this);
+
         ArrayList<Polygon> polygonList = new ArrayList<>();
         Polygon polygon = mMap.addPolygon(new PolygonOptions()
                         .add(new LatLng(28.555335, 76.798553), new LatLng(28.830117, 76.935883), new LatLng(28.882919, 77.080078), new LatLng(28.868489, 77.220154), new LatLng(28.714438, 77.328644), new LatLng(28.519141, 77.3698434), (new LatLng(28.399615, 77.196808)), (new LatLng(28.555335, 76.798553)))
@@ -174,16 +175,19 @@ implements OnMapClickListener, OnMapReadyCallback {
     @Override
     public void onMapClick(LatLng point) {
         Polygon polygon = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(0, 0), new LatLng(0, 5), new LatLng(3, 5), new LatLng(0, 0)));
+                .add(new LatLng(28.555335, 76.798553), new LatLng(28.830117, 76.935883), new LatLng(28.882919, 77.080078), new LatLng(28.868489, 77.220154), new LatLng(28.714438, 77.328644), new LatLng(28.519141, 77.3698434), (new LatLng(28.399615, 77.196808)), (new LatLng(28.555335, 76.798553))));
 
         Polygon p1 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(0, 0), new LatLng(0, 5), new LatLng(3, 5), new LatLng(0, 0)));
+                        .add(new LatLng(28.882919, 77.080078), new LatLng(28.752972, 77.078705), new LatLng(28.714438, 77.328644), new LatLng(28.868489, 77.220154),new LatLng(28.882919, 77.080078))
+        );
 
         Polygon p2 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(0, 0), new LatLng(0, 5), new LatLng(3, 5), new LatLng(0, 0)));
+                        .add(new LatLng(28.882919, 77.080078), new LatLng(28.752972, 77.078705), new LatLng(28.830117, 76.935883), new LatLng(28.882919, 77.080078))
+        );
 
         Polygon p3 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(0, 0), new LatLng(0, 5), new LatLng(3, 5), new LatLng(0, 0)));
+                        .add(new LatLng(28.555335, 76.798553), new LatLng(28.752972, 77.078705), new LatLng(28.830117, 76.935883), new LatLng(28.555335, 76.798553))
+        );
 
 
         //CHANGE POLYGON SPECIFICATIONS

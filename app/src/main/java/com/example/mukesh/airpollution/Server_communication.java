@@ -2,10 +2,7 @@ package com.example.mukesh.airpollution;
 
 import android.os.AsyncTask;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -57,32 +54,10 @@ public class Server_communication extends AsyncTask<List<NameValuePair>, Void, V
             urlConnection.setRequestMethod("POST");
             urlConnection.connect();
             PrintWriter out=new PrintWriter(urlConnection.getOutputStream());
-            out.write("username=Mukku");
+            out.write("username=Mukkuing");
 
             out.close();
-            // Read the input stream into a String
-            InputStream inputStream = urlConnection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
-            if (inputStream == null) {
-                // Nothing to do.
-                return null;
-            }
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
-                // But it does make debugging a *lot* easier if you print out the completed
-                // buffer for debugging.
-                buffer.append(line + "\n");
-            }
-
-            if (buffer.length() == 0) {
-                // Stream was empty.  No point in parsing.
-                return null;
-            }
-
-            System.out.println(buffer.toString());
 
         }catch (IOException e){
             e.printStackTrace();

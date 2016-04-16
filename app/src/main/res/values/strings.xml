@@ -24,6 +24,9 @@
     <string name="Upload_Pic">Upload</string>
     <string name="Submit">Submit</string>
 
+    <string name="post_list_url">http://ridesharingfriend.com/EVS/getAllPosts.php</string>
+    <string name="request_method">GET</string>
+    <string name="offline_message">Connect your device to the internet</string>
 
     <string-array name="Location">
         <item>Mercury</item>
@@ -35,7 +38,8 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-
+    <string name="title_activity_help__from_friend__offered">Help_FromFriend_Offered</string>
+    <string name="title_activity_post_detail">postDetailActivity</string>
 
 
 </resources>

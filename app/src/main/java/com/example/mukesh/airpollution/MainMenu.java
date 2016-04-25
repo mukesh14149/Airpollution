@@ -4,12 +4,22 @@ package com.example.mukesh.airpollution;
  * Created by Tarun  on 12/2/16.
  */
 
+        import android.content.Context;
         import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+        import android.support.multidex.MultiDex;
+        import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class MainMenu extends AppCompatActivity {
+
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

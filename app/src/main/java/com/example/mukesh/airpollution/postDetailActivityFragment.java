@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+
+import com.squareup.picasso.Picasso;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -22,11 +26,18 @@ public class postDetailActivityFragment extends Fragment {
         Bundle b = getActivity().getIntent().getExtras();
         post posts = b.getParcelable("POST");
 
+        int backdropWidth = CustomUtil.getScreenWidth(getActivity());
+        int backdropHeight = getResources().getDimensionPixelSize(R.dimen.details_backdrop_height);
+
+        ImageView view_Backdrop = (ImageView) rootView.findViewById(R.id.post_back);
+
+        Picasso.with(getActivity()).load(posts.getPost_photo()).resize(backdropWidth, backdropHeight).centerCrop().into(view_Backdrop);
+
         ((TextView) rootView.findViewById(R.id.heading))
                 .setText(posts.getPost_heading());
 
         ((TextView) rootView.findViewById(R.id.content))
-                .setText(posts.getPost_details());
+                .setText(posts.getPost_photo());
 
         return rootView;
 

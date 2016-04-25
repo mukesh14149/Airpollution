@@ -33,6 +33,17 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#003366" /> 
+
+             <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="temp2"
+            android:layout_weight="1"
+            android:id="@+id/post_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#003366" /> 
+
      
          </LinearLayout>
         </LinearLayout>

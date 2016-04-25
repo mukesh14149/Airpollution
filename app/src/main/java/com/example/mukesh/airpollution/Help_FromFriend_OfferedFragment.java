@@ -38,7 +38,7 @@ import java.util.ArrayList;
 public class Help_FromFriend_OfferedFragment extends Fragment {
 
     ListView msgList;
-    ArrayList<post> details;
+    ArrayList<post> details= new ArrayList<>();
     AdapterView.AdapterContextMenuInfo info;
     private String Preference;
 
@@ -79,14 +79,14 @@ public class Help_FromFriend_OfferedFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 post postDetail = details.get(position);
-               /* Intent intent = new Intent(getActivity().getApplication(), postDetailActivity.class);
+                Intent intent = new Intent(getActivity().getApplication(), postDetailActivity.class);
                 Bundle b = new Bundle();
-                b.putParcelable("post", postDetail);
+                b.putParcelable("POST", postDetail);
                 intent.putExtras(b);
-                startActivity(intent);*/
-                Toast toast=new Toast(getActivity());
-                toast.setText(postDetail.getPost_details());
-                toast.show();
+                startActivity(intent);
+
+                Toast.makeText(getActivity(),postDetail.getPost_details(),Toast.LENGTH_SHORT).show();
+
             }
         });
 

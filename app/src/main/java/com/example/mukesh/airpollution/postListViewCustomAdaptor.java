@@ -53,7 +53,7 @@ public class postListViewCustomAdaptor extends BaseAdapter {
         //ImageView image = (ImageView) v.findViewById(R.id.post_photo);
         TextView titleView = (TextView)v.findViewById(R.id.post_title);
         TextView ownerNameView = (TextView)v.findViewById(R.id.post_owner_name);
-
+        TextView content = (TextView)v.findViewById(R.id.post_content);
 
         post post_details = _data.get(position);
         //image.setImageResource(post_details .getPost_photo());
@@ -63,6 +63,7 @@ public class postListViewCustomAdaptor extends BaseAdapter {
 
         titleView.setText(post_details.getPost_heading());
         ownerNameView.setText(post_details .getPost_owner_name());
+        content.setText(post_details.getPost_details());
         return v;
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:defaultValue="@string/state_default_choice"
+        android:dialogTitle="@string/state_choice_message"
+        android:entries="@array/pref_list_titles"
+        android:entryValues="@array/pref_list_values"
+        android:key="@string/area"
+        android:title="@string/state_message"
+        android:summary="@string/state_title" />
+</PreferenceScreen>

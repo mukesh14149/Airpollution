@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -41,6 +43,7 @@ public class Help_FromFriend_OfferedFragment extends Fragment {
     ArrayList<post> details= new ArrayList<>();
     AdapterView.AdapterContextMenuInfo info;
     private String Preference;
+    private View rootView;
 
     public Help_FromFriend_OfferedFragment() {
     }
@@ -49,31 +52,38 @@ public class Help_FromFriend_OfferedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_help__from_friend__offered, container, false);
+        rootView = inflater.inflate(R.layout.fragment_help__from_friend__offered, container, false);
 
-      /*  msgList = (ListView) rootView.findViewById(R.id.listView_post);
 
-        details = new ArrayList<post>();
 
-        post Detail;
-        Detail = new post();
-        Detail.setPost_heading("Heading 1");
-        Detail.setPost_owner_name("Bob");
-        details.add(Detail);
 
-        Detail = new post();
-        Detail.setPost_heading("Heading 2");
-        Detail.setPost_owner_name("Bob 2");
-        details.add(Detail);
+        //check whether Movies key is present in sharedpref.
+        if (savedInstanceState == null || !savedInstanceState.containsKey("POSTS")) {
+            updatePosts(getActivity(),rootView);
+            //gridview = (GridView) rootView.findViewById(R.id.gridView);
+          //  msgList = (ListView) rootView.findViewById(R.id.listView_post);
+        }
 
-        msgList.setAdapter(new postListViewCustomAdaptor(details, getActivity()));*/
+        //if sharedpref already contain a key Movies
+        else {
+            post[] tem_detail;
+            tem_detail = (post[]) savedInstanceState.getParcelableArray("POSTS");
+
+            ArrayList<post> te = new ArrayList<post>(Arrays.asList(tem_detail));
+           details= te;
+
+           // msgList = (ListView) rootView.findViewById(R.id.listView_post);
+
+        }
+
+
 
 
         msgList = (ListView) rootView.findViewById(R.id.listView_post);
 
 
-        FetchPostList FetchPostData = new FetchPostList(getActivity(),rootView);
-                FetchPostData.execute();
+       /* FetchPostList FetchPostData = new FetchPostList(getActivity(),rootView);
+                FetchPostData.execute("delhi");*/
 
         msgList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -90,7 +100,49 @@ public class Help_FromFriend_OfferedFragment extends Fragment {
             }
         });
 
+
         return rootView;
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updatePosts(getActivity(), rootView);    //whenever activity start it will update the content.
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle saving_State) {
+
+
+        post[] tem_detail = details.toArray(new post[details.size()]);
+
+        saving_State.putParcelableArray("POSTS",tem_detail);
+        saving_State.putString("Preference", Preference);
+        super.onSaveInstanceState(saving_State);
+
+    }
+
+
+
+
+    private void updatePosts(Context context, View rootView){
+        //If internet is available
+        if(Is_Online()==true) {
+            FetchPostList updateMovies = new FetchPostList(context,rootView);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+            Preference = sharedPref.getString(getString(R.string.area), getString(R.string.pref_area));
+            updateMovies.execute(Preference);
+        }
+        else
+        {
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(), getString(R.string.offline_message),
+                    Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
+            toast.show();
+        }
     }
 
 
@@ -110,29 +162,11 @@ public class Help_FromFriend_OfferedFragment extends Fragment {
         return false;
     }
 
-    private void updatePostData(Context context, View rootView){
-        //If internet is available
-        if(Is_Online()==true) {
-            FetchPostList updateMovies = new FetchPostList(context,rootView);
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-           // Preference = sharedPref.getString(getString(R.string.pref_order), getString(R.string.pref_popularity));
-            //updateMovies.execute(Preference);
-        }
-        else
-        {
-            Toast toast = Toast.makeText(getActivity().getApplicationContext(), getString(R.string.offline_message),
-                    Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 10);
-            toast.show();
-        }
-    }
 
 
 
 
-
-
-public class FetchPostList extends AsyncTask<Void,Void,post[]> {
+public class FetchPostList extends AsyncTask<String,Void,post[]> {
 
     private Context mContext;
     private View rootView;
@@ -144,7 +178,7 @@ public class FetchPostList extends AsyncTask<Void,Void,post[]> {
     }
 
 
-    protected post[] doInBackground(Void... params) {
+    protected post[] doInBackground(String... params) {
 
         // These two need to be declared outside the try/catch
         // so that they can be closed in the finally block.
@@ -159,6 +193,7 @@ public class FetchPostList extends AsyncTask<Void,Void,post[]> {
 
         try {
             Uri buildUri = Uri.parse(getString(R.string.post_list_url)).buildUpon()
+                    .appendQueryParameter(getString(R.string.area), params[0])
                     .build();
             Log.e(LOG_TAG, buildUri.toString());
             URL url = new URL(buildUri.toString());
@@ -200,20 +235,18 @@ public class FetchPostList extends AsyncTask<Void,Void,post[]> {
                 }
             }
         }
-
         try {
             return getPostDataFromJson(postJsonStr);
         } catch (JSONException e) {
             Log.e(LOG_TAG,e.getMessage(),e);
             e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     protected void onPostExecute(post[] result) {
-           //ArrayList<post> details= new ArrayList<>();
+           details= new ArrayList<>();
 
         if (result != null) {
             for (int i = 0; i < result.length; i++) {
@@ -285,6 +318,7 @@ public class FetchPostList extends AsyncTask<Void,Void,post[]> {
         for (post s : postResultStr) {
             Log.v(LOG_TAG, "post Title: " + s.getPost_heading());
             Log.v(LOG_TAG, "post Description: " + s.getPost_details());
+            Log.v(LOG_TAG, "post locations: " + s.getPost_loaction());
         }
         return postResultStr;
 

@@ -37,7 +37,7 @@ public class postDetailActivityFragment extends Fragment {
                 .setText(posts.getPost_heading());
 
         ((TextView) rootView.findViewById(R.id.content))
-                .setText(posts.getPost_photo());
+                .setText(posts.getPost_area());
 
         return rootView;
 

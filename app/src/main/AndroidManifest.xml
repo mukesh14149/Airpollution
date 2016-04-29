@@ -18,13 +18,13 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Help_FromFriend_Offered"
-            android:label="@string/title_activity_help__from_friend__offered"
-            android:parentActivityName=".Help_FromFriend"
+            android:name=".MainMenu"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".MainMenu"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mukesh.airpollution.Help_FromFriend" />
+                android:value="com.example.mukesh.airpollution.MainMenu" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +35,12 @@
         <activity
             android:name=".Monitor_DelhiPollution"
             android:label="@string/title_monitor_delhi_pollution" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_monitor_delhi_pollution" />
+        <activity
+            android:name=".Help_FromFriend_Offered"
+            android:label="@string/title_activity_help__from_friend__offered" />
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login" />
@@ -62,9 +68,6 @@
             android:value="AIzaSyAQz-hn5j-35puYtixK_JeQczgtfxKGmY4 " />
 
         <activity
-            android:name=".MainMenu"
-            android:label="@string/app_name" />
-        <activity
             android:name=".postDetailActivity"
             android:label="@string/title_activity_post_detail"
             android:parentActivityName=".Help_FromFriend_Offered"
@@ -73,6 +76,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mukesh.airpollution.Help_FromFriend_Offered" />
         </activity>
+        <activity android:name=".Submit_application"></activity>
     </application>
 
 </manifest>

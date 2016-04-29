@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         User user = userLocalStore.getLoggedInUser();
 
         etUsername.setText(user.username);
-        etName.setText(user.name);
+        etName.setText(user.location);
         etAge.setText(user.age+"");
     }
 

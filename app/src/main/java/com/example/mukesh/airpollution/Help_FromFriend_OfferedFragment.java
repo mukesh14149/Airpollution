@@ -115,14 +115,10 @@ public class Help_FromFriend_OfferedFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle saving_State) {
-
-
         post[] tem_detail = details.toArray(new post[details.size()]);
-
         saving_State.putParcelableArray("POSTS",tem_detail);
         saving_State.putString("Preference", Preference);
         super.onSaveInstanceState(saving_State);
-
     }
 
 

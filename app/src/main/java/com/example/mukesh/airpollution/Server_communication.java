@@ -69,6 +69,8 @@ public class Server_communication extends AsyncTask<NameValuePair, Void, Void> {
             out.write(Arrays.asList(dataToSend).get(3).toString());
             out.write("&");
             out.write(Arrays.asList(dataToSend).get(4).toString());
+            out.write("&");
+            out.write(Arrays.asList(dataToSend).get(5).toString());
             System.out.println("kutte");
             Log.e(LOG_TAG,dataToSend.toString());
             System.out.println(Arrays.asList(dataToSend).get(0).toString());

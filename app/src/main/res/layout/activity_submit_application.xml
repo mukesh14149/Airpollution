@@ -9,13 +9,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.mukesh.airpollution.Submit_application">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="You have successfully submitted"
+        android:id="@+id/textView4"
+        android:textSize="30dp"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Go to homepage"
+        android:textSize="30dp"
         android:id="@+id/button"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        />
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

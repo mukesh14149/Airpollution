@@ -3,7 +3,7 @@ package com.example.mukesh.airpollution;
 /**
  * Created by mukesh on 23/1/16.
  *
- * updated by Siddharth on 3/3/16.
+ *
  */
 
 
@@ -552,6 +552,16 @@ public class MapsActivity extends FragmentActivity
         final LatLng SYDNEY = new LatLng(28.6139,77.2090);
         final LatLng MOUNTAIN_VIEW = new LatLng(28.6387, 77.0941);
 
+        p1.setFillColor(0x80FFCDD2);
+        p2.setFillColor(0x80F44336);
+        p3.setFillColor(0x80B71C1C);
+        p4.setFillColor(0x80E6EE9C);
+        p5.setFillColor(0x80FFEE58);
+        p6.setFillColor(0x80FBC02D);
+        p7.setFillColor(0x80E6EE9C);
+        p8.setFillColor(0x80FB8C00);
+        p9.setFillColor(0x80FF6D00);
+
         final LatLngBounds.Builder bounds;
         final LatLng s=new LatLng(28.643353 ,77.446747);
         bounds = new LatLngBounds.Builder();
@@ -1005,6 +1015,16 @@ public class MapsActivity extends FragmentActivity
         List<LatLng> points7 = p8.getPoints();
         List<LatLng> points8 = p9.getPoints();
 
+        p1.setFillColor(0x80FFCDD2);
+        p2.setFillColor(0x80F44336);
+        p3.setFillColor(0x80B71C1C);
+        p4.setFillColor(0x80E6EE9C);
+        p5.setFillColor(0x80FFEE58);
+        p6.setFillColor(0x80FBC02D);
+        p7.setFillColor(0x80E6EE9C);
+        p8.setFillColor(0x80FB8C00);
+        p9.setFillColor(0x80FF6D00);
+
 
         if (PolyUtil.containsLocation(point, points, false))
         {
@@ -1013,7 +1033,6 @@ public class MapsActivity extends FragmentActivity
             intent.putExtra("message", "1");
             intent.putExtra("message2", data);
             startActivity(intent);
-           p1.setFillColor(0x80B71C1C);
 
 
         } else if (PolyUtil.containsLocation(point, points1, false)) {
@@ -1021,7 +1040,6 @@ public class MapsActivity extends FragmentActivity
 
             intent.putExtra("message", "2");
             intent.putExtra("message2", data);
-            p2.setFillColor(0x80880E4F);
             startActivity(intent);
 
         }
@@ -1031,7 +1049,6 @@ public class MapsActivity extends FragmentActivity
             intent.putExtra("message", "3");
             intent.putExtra("message2", data);
 
-            p3.setFillColor(0x806A1B9A);
             startActivity(intent);
         }
         if (PolyUtil.containsLocation(point, points3, false)) {
@@ -1040,7 +1057,6 @@ public class MapsActivity extends FragmentActivity
             intent.putExtra("message", "4");
             intent.putExtra("message2", data);
 
-            p4.setFillColor(0x2196F3);
             startActivity(intent);
         }
         if (PolyUtil.containsLocation(point, points4, false)) {
@@ -1048,7 +1064,6 @@ public class MapsActivity extends FragmentActivity
 
             intent.putExtra("message", "5");
             intent.putExtra("message2", data);
-            p5.setFillColor(0x80009688);
             startActivity(intent);
 
         }
@@ -1057,7 +1072,6 @@ public class MapsActivity extends FragmentActivity
 
             intent.putExtra("message", "6");
             intent.putExtra("message2", data);
-            p6.setFillColor(0x804CAF50);
             startActivity(intent);
 
         }
@@ -1066,16 +1080,14 @@ public class MapsActivity extends FragmentActivity
 
             intent.putExtra("message", "7");
             intent.putExtra("message2", data);
-            p7.setFillColor(0x80CDDC39);
             startActivity(intent);
 
         }
         if (PolyUtil.containsLocation(point, points7, false)) {
-            Intent intent = new Intent(this,LocationData.class);
+            Intent intent = new Intent(this, LocationData.class);
 
             intent.putExtra("message", "8");
             intent.putExtra("message2", data);
-            p3.setFillColor(0x80FF9800);
             startActivity(intent);
 
         }
@@ -1084,7 +1096,7 @@ public class MapsActivity extends FragmentActivity
 
             intent.putExtra("message", "9");
             intent.putExtra("message2", data);
-            p9.setFillColor(0x80795548);
+
             startActivity(intent);
 
         }

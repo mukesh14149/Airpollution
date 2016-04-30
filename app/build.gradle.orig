@@ -33,11 +33,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.google.android.gms:play-services:8.4.0'
-    compile 'com.google.maps.android:android-maps-utils:0.4'
-    compile 'cz.msebera.android:httpclient:4.4.1.1'
-}
 =======
 dependencies {
     provided fileTree(include: ['*.jar'], dir: 'libs')
@@ -67,7 +62,6 @@ dependencies {
 }
 
 
->>>>>>> cd211704353ca95e45e8497b49d9d8a601b45a27
 dependencies {
     compile 'com.android.support:multidex:1.0.1'
 }
@@ -75,8 +69,12 @@ dependencies {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+>>>>>>> 53758a2ac98c7e2e5e76d9a27b03a9c26fdf14e3
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.google.maps.android:android-maps-utils:0.4'
     compile 'cz.msebera.android:httpclient:4.4.1.1'
+}
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
 }

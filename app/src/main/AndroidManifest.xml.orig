@@ -50,7 +50,7 @@
         <activity
             android:name=".Help_FromFriend_Offered"
             android:label="@string/title_activity_help__from_friend__offered" />
->>>>>>> cd211704353ca95e45e8497b49d9d8a601b45a27
+>>>>>>> 53758a2ac98c7e2e5e76d9a27b03a9c26fdf14e3
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login" />
@@ -59,7 +59,9 @@
             android:label="@string/title_monitor_iiitd_pollution" />
         <activity
             android:name=".LocationData"
-            android:label="@string/LocatioData"></activity>
+            android:label="@string/LocatioData" >
+        </activity>
+
         <activity
             android:name=".Help_FromFriend"
             android:label="@string/title_need_help" />
@@ -75,6 +77,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_Map" />
+
         <activity
             android:name=".SettingActivity"
             android:label="@string/action_settings" />
@@ -92,11 +95,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mukesh.airpollution.Help_FromFriend_Offered" />
         </activity>
-        <activity android:name=".Submit_application" />
-        <activity
-            android:name=".email_authority"
-            android:label="@string/title_activity_email_authority"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Submit_application"></activity>
     </application>
 
 </manifest>

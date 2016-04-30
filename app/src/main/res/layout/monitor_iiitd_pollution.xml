@@ -9,5 +9,16 @@
         android:layout_height="wrap_content"
         android:text="Monitor IIITD pollution"
         android:id="@+id/textView2"
-        android:layout_weight="0.43" />
+        android:layout_weight="0.12" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_weight="0.43"
+        android:text="            Coming Soon!"
+        android:textColor="#1e6e04"
+        android:height="30dp"
+        android:maxWidth="20dp"
+        android:textSize="30dp" />
 </LinearLayout>

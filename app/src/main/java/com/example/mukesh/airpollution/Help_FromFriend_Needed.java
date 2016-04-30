@@ -151,7 +151,7 @@ public class Help_FromFriend_Needed extends AppCompatActivity implements View.On
             dataToSend.add(new BasicNameValuePair("post_area", user_area));
             dataToSend.add(new BasicNameValuePair("post_location","INDIA"));
             dataToSend.add(new BasicNameValuePair("post_details", post_description));
-            //dataToSend.add(new BasicNameValuePair("Image_String",Image_String));
+            dataToSend.add(new BasicNameValuePair("Image_String",Image_String));
             Server_communication ser=new Server_communication();
             System.out.println("ja rha hu");
             System.out.println(dataToSend.size());

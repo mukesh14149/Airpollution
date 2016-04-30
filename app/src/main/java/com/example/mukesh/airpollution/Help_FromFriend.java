@@ -23,7 +23,7 @@ public class Help_FromFriend extends AppCompatActivity {
 
     public void HelpNeeded(View view) {
 // Do something in response to button
-        startActivity(new Intent(getApplicationContext(), Help_FromFriend_Needed.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
     }
 

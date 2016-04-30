@@ -4,9 +4,11 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 
 import org.apache.commons.httpclient.params.HttpConnectionParams;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.HttpConnection;
@@ -22,8 +24,17 @@ import cz.msebera.android.httpclient.params.BasicHttpParams;
 import cz.msebera.android.httpclient.params.HttpParams;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.UnknownServiceException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by mukesh on 17/1/16.
  */
@@ -57,24 +68,65 @@ public class ServerRequests {
             }
             @Override
             protected Void doInBackground(Void... params) {
-                ArrayList<NameValuePair> dataToSend=new ArrayList<>();
-                dataToSend.add(new BasicNameValuePair("name", user.name));
-                dataToSend.add(new BasicNameValuePair("age", user.age + ""));
-                dataToSend.add(new BasicNameValuePair("username", user.username));
-                dataToSend.add(new BasicNameValuePair("password", user.password));
+                //ArrayList<NameValuePair> dataToSend=new ArrayList<NameValuePair>();
+                System.out.println("batman");
+                System.out.println(user.location+""+user.password+""+user.username);
 
-                HttpParams httpRequestParams=new BasicHttpParams();
-                cz.msebera.android.httpclient.params.HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
-                cz.msebera.android.httpclient.params.HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
 
-                HttpClient client =new DefaultHttpClient();
-                HttpPost post=new HttpPost(SERVER_ADDRESS + "Register.php");
-                try{
-                    post.setEntity(new UrlEncodedFormEntity(dataToSend));
-                    client.execute(post);
-                }catch(Exception e){
+                HttpURLConnection urlConnection = null;
+                String string[]=null;
+                final String target_uri =
+                        "http://ridesharingfriend.com/EVS/registeruser.php";
+                try {
+                    URL url = new URL(target_uri.toString());
+                    // Create the request to OpenWeatherMap, and open the connection
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("POST");
+                    urlConnection.connect();
+                    PrintWriter out=new PrintWriter(urlConnection.getOutputStream());
+                    out.write("person_location="+user.location);
+                    out.write("&");
+                    out.write("person_name="+user.username);
+                    out.write("&");
+                    out.write("person_password="+user.password);
+
+                    System.out.println("kutte");
+                  //  Log.e(LOG_TAG,dataToSend.toString());
+
+
+                    out.close();
+                    // Read the input stream into a String
+                    InputStream inputStream = urlConnection.getInputStream();
+                    StringBuffer buffer = new StringBuffer();
+                    if (inputStream == null) {
+                        // Nothing to do.
+                        return null;
+                    }
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
+                        // But it does make debugging a *lot* easier if you print out the completed
+                        // buffer for debugging.
+                        buffer.append(line + "\n");
+                    }
+
+                    if (buffer.length() == 0) {
+                        // Stream was empty.  No point in parsing.
+                        return null;
+                    }
+
+                    System.out.println(buffer.toString());
+
+                }catch (IOException e){
                     e.printStackTrace();
+                }finally {
+                    if (urlConnection!=null){
+                        urlConnection.disconnect();
+                    }
                 }
+
                 return null;
             }
 
@@ -98,39 +150,82 @@ public class ServerRequests {
 
         @Override
         protected User doInBackground(Void... params) {
-            ArrayList<NameValuePair> dataToSend=new ArrayList<>();
+            //ArrayList<NameValuePair> dataToSend=new ArrayList<>();
+            System.out.println("batman");
+            System.out.println(user.password+""+user.username);
 
-            dataToSend.add(new BasicNameValuePair("username", user.username));
-            dataToSend.add(new BasicNameValuePair("password", user.password));
-
-            HttpParams httpRequestParams=new BasicHttpParams();
-            cz.msebera.android.httpclient.params.HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
-            cz.msebera.android.httpclient.params.HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
-
-            HttpClient client =new DefaultHttpClient();
-            HttpPost post=new HttpPost(SERVER_ADDRESS + "FetchUserData.php");
-
+            //dataToSend.add(new BasicNameValuePair("person_name", user.username));
+            //dataToSend.add(new BasicNameValuePair("person_password", user.password));
             User returnedUser=null;
-            try{
-                post.setEntity(new UrlEncodedFormEntity(dataToSend));
-                HttpResponse httpResponse= client.execute(post);
+            HttpURLConnection urlConnection = null;
+            String string[]=null;
+            final String target_uri =
+                    "http://ridesharingfriend.com/EVS/getLoginDetails.php";
+            try {
 
-                HttpEntity entity=httpResponse.getEntity();
-                String result= EntityUtils.toString(entity);
-                JSONObject jObject =new JSONObject(result);
+                URL url = new URL(target_uri.toString());
+                // Create the request to OpenWeatherMap, and open the connection
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("POST");
+                urlConnection.connect();
+                PrintWriter out=new PrintWriter(urlConnection.getOutputStream());
+                out.write("person_name="+user.username);
+                out.write("&");
+                out.write("person_password="+user.password);
+
+                System.out.println("kutte");
+                //  Log.e(LOG_TAG,dataToSend.toString());
+
+
+                out.close();
+                // Read the input stream into a String
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null) {
+                    // Nothing to do.
+                    return null;
+                }
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
+                    // But it does make debugging a *lot* easier if you print out the completed
+                    // buffer for debugging.
+                    buffer.append(line + "\n");
+                }
+
+                if (buffer.length() == 0) {
+                    // Stream was empty.  No point in parsing.
+                    return null;
+                }
+
+                System.out.println(buffer.toString());
+
+                JSONObject jObject =new JSONObject(buffer.toString());
                 if(jObject.length()==0){
                     returnedUser=null;
+                    System.out.println("chl be");
 
                 }else{
+                    String id=jObject.getString("id");
                     String name=jObject.getString("name");
-                    int age = jObject.getInt("age");
-                    returnedUser=new User(name, age, user.username, user.password);
+                    String location=jObject.getString("location");
+                    System.out.println("dekho dekho"+id+name+location);
+                    returnedUser=new User(id, name, location);
                 }
 
 
-            }catch(Exception e){
+            }catch (IOException e){
                 e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection!=null){
+                    urlConnection.disconnect();
+                }
             }
+            System.out.println("return");
             return returnedUser;
         }
 

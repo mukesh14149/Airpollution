@@ -49,12 +49,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 String password=etPassword.getText().toString();
                 User user = new User(username, password);
                 authenticate(user);
-
-
+                //startActivity(new Intent(this, Register.class));
                 break;
 
             case R.id.tvRegisterLink:
-                startActivity(new Intent(this, MapsActivity.class));
+                startActivity(new Intent(this, Register.class));
                 break;
         }
     }
@@ -64,10 +63,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         serverRequests.fetchUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
+                System.out.println("main aa gya");
                 if(returnedUser==null){
                     showErrorMessage();
+                    System.out.println("main aa");
+
                 }else{
+                    System.out.println("main");
                     logUserIn(returnedUser);
+
                 }
             }
         });
@@ -79,9 +83,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         dialogBuilder.show();
     }
     private  void logUserIn(User returnedUser){
+        System.out.println("maya");
         userLocalStore.storeUserData(returnedUser);
         userLocalStore.setUserLoggedIn(true);
-        startActivity(new Intent(this, MainActivity.class));
+        System.out.println("aaaa");
+        startActivity(new Intent(this, Help_FromFriend_Needed.class));
 
     }
 }

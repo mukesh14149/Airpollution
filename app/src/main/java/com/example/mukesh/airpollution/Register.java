@@ -17,14 +17,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
     Button bRegister;
 
-    EditText etName, etAge, etUsername, etPassword;
+    EditText etLocation, etAge, etUsername, etPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
 
-        etName = (EditText) findViewById(R.id.etName);
+        etLocation = (EditText) findViewById(R.id.etName);
         etAge= (EditText) findViewById(R.id.etAge);
         etUsername= (EditText) findViewById(R.id.etUsername);
         etPassword= (EditText) findViewById(R.id.etPassword);
@@ -38,12 +38,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId())
         {
             case R.id.bRegister:
-                String name = etName.getText().toString();
+                String location = etLocation.getText().toString();
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 int age = 11;
 
-                User user = new User(name, age, username, password);
+                User user = new User(location, age, username, password);
 
                 registerUser(user);
                 break;

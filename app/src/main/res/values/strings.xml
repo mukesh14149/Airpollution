@@ -23,6 +23,8 @@
     <string name="Post_Description">Description</string>
     <string name="Upload_Pic">Upload</string>
     <string name="Submit">Submit</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="LocatioData">LocationData</string>
 
 
     <string-array name="Location">

@@ -31,6 +31,10 @@
             android:name=".Monitor_DelhiPollution"
             android:label="@string/title_monitor_delhi_pollution" >
         </activity>
+        <activity
+            android:name=".LocationData"
+            android:label="@string/LocatioData" >
+        </activity>
 
         <activity
             android:name=".Login"

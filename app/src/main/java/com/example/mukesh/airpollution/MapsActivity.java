@@ -8,6 +8,7 @@ package com.example.mukesh.airpollution;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -42,34 +43,120 @@ public class MapsActivity extends FragmentActivity
     PolygonOptions polygonOptions;
     Polygon polygon;
     private final String LOG_TAG = getClass().getSimpleName();
-
+    ArrayList<String> data=new ArrayList<String>();
+    ArrayList<String> Colo=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.e(LOG_TAG, "Logging 1");
         super.onCreate(savedInstanceState);
-        ArrayList<String> area=new ArrayList<String>();
-        area.add("D.C.E.");
-        area.add("Punjabi5Bagh");
-        area.add("Shadipur");
-        area.add("Dwarka");
-        area.add("Mandir5Marg");
-        area.add("ITO");
-        area.add("Anand5Vihar");
-        area.add("R5K5Puram");
-        area.add("Ihbas");
-        area.add("Civil5Lines");
-        area.add("IGI5Airport");
-        for (String temp : area) {
-            Log.e(LOG_TAG, "Logging Area");
-            try {
-                Web_crawling w=new Web_crawling();
-                System.out.println( w.web_crawl(temp));
-                Log.e(LOG_TAG, "Logging TRY");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.e(LOG_TAG, "Catch Error");
+
+        Thread downloadThread = new Thread() {
+            public void run() {
+
+                try {
+                    ArrayList<String> area=new ArrayList<String>();
+                    area.add("D.C.E.");
+                    area.add("Punjabi5Bagh");
+                    area.add("Shadipur");
+                    area.add("Dwarka");
+                    area.add("Mandir5Marg");
+                    area.add("ITO");
+                    area.add("Anand5Vihar");
+                    area.add("R5K5Puram");
+                    area.add("Ihbas");
+                    area.add("Civil5Lines");
+                    area.add("IGI5Airport");
+                    for (String temp : area) {
+                        Log.e(LOG_TAG, "Logging Area");
+                        try {
+                            Web_crawling w=new Web_crawling(getApplicationContext());
+                            data.add(w.web_crawl(temp));
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.e(LOG_TAG, "Catch Error");
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        downloadThread.start();
+        try {
+            synchronized(this){
+                wait(2000);
             }
         }
+        catch(InterruptedException ex)
+        {
+        }
+
+/*
+     int ko=0;
+        for(ko=0;ko<data.size();ko++)
+        {
+       String str=data.get(ko);
+
+            String r="";
+            String av="";
+            int k=0;
+            String[] t= str.split(",");
+            int i=0,a=1,b=3,c=5,p=0;
+            for(i=0;i<t.length;i++)
+            {
+
+                if((i%7==0)||(i==b)||(i==c))
+                {
+                    //System.out.println(i +"  "+ b+ "  " +t[i]);
+                    if(i==c)
+                        k=1;
+                    if(i==b)
+                    {
+                        b=b+7;
+                        p=1;
+                    }
+                    if(i==c)
+                        c=c+7;
+                    if(k==1)
+                    {
+                        if(t[i].length()>15)
+                        {
+                            int lv;
+                            String[] l=t[i].split(":");
+                            String[] lx=t[i].split(" ");
+
+                            //System.out.println(l[1]);
+                            String[] dx=l[1].split(" µ");
+                            //System.out.println(dx[0]);
+                            float l1= Float.parseFloat(dx[0]);
+                            float l2=Float.parseFloat(lx[0]);
+                            System.out.println(l1 + "  "+l2);
+                            float d=l1-l2;
+                            //System.out.println(i +"  "+ b+ "  " +t[i]);
+                            r=r+l[1]+","+d+",";
+                            av=av+d+",";
+                        }
+                        else
+                            r=r+" "+","+0+",";
+                        k=0;
+                    }
+                    else if(p==1)
+                    {
+                        r=r+" "+t[i]+" µg/m3,";
+                        p=0;
+                    }
+                    else
+                        r=r+t[i]+",";
+                }
+            }
+            //System.out.println(r);
+            Colo.add(av);
+          //  return av;
+
+        }
+        Log.e(LOG_TAG,"hooooha"+Colo.toString());
+*/
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         //  SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -908,22 +995,100 @@ public class MapsActivity extends FragmentActivity
                         .strokeColor(Color.RED)
         );
 
-
         List<LatLng> points = p1.getPoints();
         List<LatLng> points1 = p2.getPoints();
         List<LatLng> points2 = p3.getPoints();
+        List<LatLng> points3 = p4.getPoints();
+        List<LatLng> points4 = p5.getPoints();
+        List<LatLng> points5 = p6.getPoints();
+        List<LatLng> points6 = p7.getPoints();
+        List<LatLng> points7 = p8.getPoints();
+        List<LatLng> points8 = p9.getPoints();
 
 
-        if (PolyUtil.containsLocation(point, points, false)) {
+        if (PolyUtil.containsLocation(point, points, false))
+        {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "1");
+            intent.putExtra("message2", data);
+            startActivity(intent);
+           p1.setFillColor(0x80B71C1C);
+
 
         } else if (PolyUtil.containsLocation(point, points1, false)) {
-            //Do SOMETHING...
-            p1.setFillColor(Color.BLACK);
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "2");
+            intent.putExtra("message2", data);
+            p2.setFillColor(0x80880E4F);
+            startActivity(intent);
+
         }
         if (PolyUtil.containsLocation(point, points2, false)) {
-            //Do SOMETHING..
-            p2.setFillColor(Color.BLUE);
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "3");
+            intent.putExtra("message2", data);
+
+            p3.setFillColor(0x806A1B9A);
+            startActivity(intent);
         }
+        if (PolyUtil.containsLocation(point, points3, false)) {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "4");
+            intent.putExtra("message2", data);
+
+            p4.setFillColor(0x2196F3);
+            startActivity(intent);
+        }
+        if (PolyUtil.containsLocation(point, points4, false)) {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "5");
+            intent.putExtra("message2", data);
+            p5.setFillColor(0x80009688);
+            startActivity(intent);
+
+        }
+        if (PolyUtil.containsLocation(point, points5, false)) {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "6");
+            intent.putExtra("message2", data);
+            p6.setFillColor(0x804CAF50);
+            startActivity(intent);
+
+        }
+        if (PolyUtil.containsLocation(point, points6, false)) {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "7");
+            intent.putExtra("message2", data);
+            p7.setFillColor(0x80CDDC39);
+            startActivity(intent);
+
+        }
+        if (PolyUtil.containsLocation(point, points7, false)) {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "8");
+            intent.putExtra("message2", data);
+            p3.setFillColor(0x80FF9800);
+            startActivity(intent);
+
+        }
+        if (PolyUtil.containsLocation(point, points8, false)) {
+            Intent intent = new Intent(this,LocationData.class);
+
+            intent.putExtra("message", "9");
+            intent.putExtra("message2", data);
+            p9.setFillColor(0x80795548);
+            startActivity(intent);
+
+        }
+
 
 
 

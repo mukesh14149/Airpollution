@@ -6,4 +6,16 @@
         <item>@string/priority2</item>
         <item>@string/priority3</item>
     </string-array>
+
+
+    <string-array name="pref_list_titles">
+        <item>Hariyana</item>
+        <item>Delhi</item>
+    </string-array>
+    <string-array name="pref_list_values">
+        <item>hariyana</item>
+        <item>delhi</item>
+    </string-array>
+
+
 </resources>

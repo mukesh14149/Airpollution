@@ -48,6 +48,11 @@
             android:name=".Monitor_IIITDPollution"
             android:label="@string/title_monitor_iiitd_pollution" />
         <activity
+            android:name=".LocationData"
+            android:label="@string/LocatioData" >
+        </activity>
+
+        <activity
             android:name=".Help_FromFriend"
             android:label="@string/title_need_help" />
         <activity

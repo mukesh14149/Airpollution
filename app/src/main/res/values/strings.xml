@@ -36,7 +36,6 @@
     <string name="pref_area">delhi</string>
 
 
-
     <string name="post_list_url">http://ridesharingfriend.com/EVS/getAllPosts.php?</string>
     <string name="request_method">GET</string>
     <string name="offline_message">Connect your device to the internet</string>
@@ -45,19 +44,19 @@
     <string name="action_about">About</string>
 
 
-
     <string-array name="Location">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>ITO</item>
+        <item>Anand-Vihar</item>
+        <item>Rk-Puram</item>
+        <item>Dwarka</item>
+        <item>Mandir marg</item>
+        <item>IGI Airport</item>
+        <item>ShadiPur</item>
+        <item>Ihbas</item>
     </string-array>
     <string name="title_activity_help__from_friend__offered">Help_FromFriend_Offered</string>
     <string name="title_activity_post_detail">postDetailActivity</string>
+    <string name="title_activity_email_authority">email_authority</string>
 
 
 </resources>

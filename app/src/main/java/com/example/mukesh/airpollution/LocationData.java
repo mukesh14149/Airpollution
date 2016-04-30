@@ -78,67 +78,8 @@ public class LocationData extends AppCompatActivity {
         };
         downloadThread.start();
         */
-
-
-        if (j == "1")
-            func1();
-        if (j == "2")
-            func2();
-        if (j == "3")
-            func3();
-        if (j == "4")
-            func4();
-        if (j == "5")
-            func5();
-        if (j == "6")
-            func6();
-        if (j == "7")
-            func7();
-        if (j == "8")
-            func8();
-        if (j == "9")
-            func9();
-
     }
 
-
-
-    public void func1()
-    {
-
-    }
-    void func2()
-    {
-
-    }
-    void func3()
-    {
-
-    }
-    void func4()
-    {
-
-    }
-    void func5()
-    {
-
-    }
-    void func6()
-    {
-
-    }
-    void func7()
-    {
-
-    }
-    void func8()
-    {
-
-    }
-    void func9()
-    {
-
-    }
     public static class PlaceholderFragment extends Fragment {
 
         ArrayAdapter<String> mForecastAdapter;
@@ -168,7 +109,7 @@ public class LocationData extends AppCompatActivity {
 
             String array[] = new String[2];
             array[0] = data.get(Integer.parseInt(j));
-                System.out.println(array[0]);
+               // System.out.println(array[0]);
 
             String [] x = array[0].split(",");
             ArrayList<String> t= new ArrayList<String>();

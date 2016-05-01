@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".Monitor_DelhiPollution"
-<<<<<<< HEAD
+
             android:label="@string/title_monitor_delhi_pollution" >
         </activity>
         <activity
@@ -42,7 +42,7 @@
             android:label="@string/LocatioData" >
         </activity>
 
-=======
+
             android:label="@string/title_monitor_delhi_pollution" />
         <activity
             android:name=".MainActivity"
@@ -50,7 +50,7 @@
         <activity
             android:name=".Help_FromFriend_Offered"
             android:label="@string/title_activity_help__from_friend__offered" />
->>>>>>> cd211704353ca95e45e8497b49d9d8a601b45a27
+
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login" />
